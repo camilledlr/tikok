@@ -43,7 +43,7 @@ router.post("/create-shop/:id", uploadCloud.single("image"), (req, res, next) =>
     .catch(next);
 });
 
-router.get("/myshelves/:id", protectRoute, protectRole("seller"), (req, res, next) => {
+router.get("/myshelves/:id", (req, res, next) => {
   shopModel
     .findById(req.params.id, {
       list_products: 1
@@ -60,7 +60,7 @@ router.get("/myshelves/:id", protectRoute, protectRole("seller"), (req, res, nex
     .catch(next);
 });
 
-router.get("/delete-item/:shop_id/:id",protectRoute, protectRole("seller"),(req, res, next) => {
+router.get("/delete-item/:shop_id/:id",(req, res, next) => {
   console.log("heyyyy");
   const removeShopProduct = shopModel.findByIdAndUpdate(
     req.params.shop_id, {
@@ -103,13 +103,13 @@ router.post("/edit-item/:shop_id/:id", (req, res, next) => {
     })
     .catch(next);
 });
-router.get("/get-item-info/:shop_id/:id", protectRoute, protectRole("seller"), (req, res, next) => {
+router.get("/get-item-info/:shop_id/:id", (req, res, next) => {
   productModel
     .findById(req.params.id)
     .then(product => res.json(product))
     .catch(next);
 });
-router.get("/create-item/:shop_id", protectRoute, protectRole("seller"),(req, res, next) => {
+router.get("/create-item/:shop_id",(req, res, next) => {
   shopModel
     .findById(req.params.shop_id)
     .then(shop => res.render("sellers/createItem", {
@@ -150,7 +150,7 @@ router.post("/create-item/:shop_id", uploadCloud.single("image"), (req, res, nex
     });
 });
 
-router.get("/select-items", protectRoute, protectRole("seller"), function (req, res, next) {
+router.get("/select-items", function (req, res, next) {
   productModel
     .find({
       isTemplate: true
@@ -167,7 +167,7 @@ router.post("/select-items", function (req, res, next) {
   console.log(req.body);
 });
 
-router.get("/dashboard/:shop_id", protectRoute, protectRole("seller"), (req, res, next) => {
+router.get("/dashboard/:shop_id", (req, res, next) => {
   shopModel
     .findById(req.params.shop_id)
     .then(shop => res.render("sellers/dashboard", {

@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const protectRoute = require("../middlewares/protectPrivateRoute");
 const protectRole = require("../middlewares/checkRole");
 
-router.get('/mybaskets/:cust_id', protectRoute, protectRole("customer"), (req, res, next) => {
+router.get('/mybaskets/:cust_id', (req, res, next) => {
   customerModel.findById(req.params.cust_id, {
       'orders.baskets': 1
     }).populate('orders.baskets')
