@@ -1,7 +1,9 @@
 {{>customerNavBar}}
 {{>header}}
+<div clas="cat-main">
+{{#if products}}
+<h1>Ces commerçants vendent ce que vous recherchez ...</h1>
 {{#each products}}
-<div>{{this.id_shop.name}}</div>
  <a href="/shopping/shop/{{this.id_shop}}">
         <div class="shop-block">
             <img class="image-shop"alt="shop" src="{{this.id_shop.image}}" width="300">
@@ -10,4 +12,7 @@
         </div>
 </a>
 {{/each}}
+{{else}}
+<div class="no-result">No shops yet !</div>
+{{/if}}
 

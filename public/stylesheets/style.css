@@ -344,7 +344,6 @@ a {
   height: 50px;
   background-color: rgb(5, 110, 93);
   border-radius: 50px;
-  /* margin-top: 10vh; */
   color: whitesmoke;
   padding-left: 4vh;
   font-size: 2.5vh
@@ -713,3 +712,25 @@ a {
   text-align: center;
 }
 
+.no-result {
+  background-color: rgba(231, 210, 170, 0.52);
+  text-align: center;
+  border-radius: 20px;
+  width: 50%;
+  height: 20vh;
+  font-size: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(184, 50, 26);
+}
+
+.cat-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
+    grid-gap: 5vh;
+}

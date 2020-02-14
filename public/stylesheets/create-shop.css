@@ -28,7 +28,7 @@ h3 {
     align-items: center;
     justify-content: center;
     color: white;
-    height: 60vh;
+    height: 80vh;
 }
 
 
@@ -47,11 +47,17 @@ h3 {
 #product-image {
     border-radius: .5em;
     position: relative;
+    width: 30vh;
 }
 #product-image:hover {
     filter: blur(2px)
 }
 
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .circle-add-image {
     position: absolute;
     left: calc(50% - 5vh);
@@ -164,3 +170,4 @@ select option {
     align-content: center;
     align-items: center;
 }
+

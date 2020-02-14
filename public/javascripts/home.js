@@ -6,6 +6,9 @@ const form = document.getElementById('search-form');
 const container = document.getElementById('main-home')
 
 function displayResults(results) {
+    if (results.data.length == 0) {
+        container.innerHTML = `<div class="no-result">No shops yet !</div>`
+    } else {
     container.innerHTML ='<h2>Ces commerçants vendent ce que vous recherchez ...<h2>';
     const newGrid = document.createElement('div');
     container.appendChild(newGrid);
@@ -18,9 +21,8 @@ function displayResults(results) {
             <h3>${result.id_shop.name}</h3>
             <p class="description">${result.id_shop.description}</p>
         </div>
-        </a>`;
-        
-    })
+        </a>`})
+    }
 }
 
 form.onsubmit = function (evt) {
