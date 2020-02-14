@@ -523,6 +523,20 @@ a {
 }
 
 /* Shop page while shopping */
+#shopNameHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7vh;
+}
+
+#shopNameSSS {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7vh;
+}
+
 #sShopImg {
   height: auto; 
   width: 22vw; 
@@ -535,7 +549,7 @@ a {
 }
 
 .grid-container {
-  padding-top: 35vh;
+  padding-top: 15vh;
 }
 
 
@@ -633,11 +647,18 @@ a {
   z-index: 0;
   background-color: rgba(0,0,0,0.65);  */
 
-
+  #sStartBackground{
+    background:linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)), url('/tropicalFruit.jpg');
+    height: 92vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
   /* background:linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('/bg.jpg');
   background-size: cover;
   background-repeat:no-repeat; */
-
+/* 
 #sStartBackground::before {
   background-image: url('/fruitsopacity.png');
   background-size: cover;
@@ -650,7 +671,7 @@ a {
   height: 100%;
   z-index: -2;
   opacity: 0.2;  
-  }
+  } */
 
 #sPicCover {
   width: 100%;
@@ -668,9 +689,9 @@ a {
   width: 60%;
   height: 10%;
   font-size: 3vh;
-  color: black;
+  /* color: black; */
   justify-content: space-between;
-  margin-top: 10vh;
+  margin-top: 13.5vh;
 }
 
 #startContainer {
@@ -682,12 +703,13 @@ a {
   /* align-content: center; */
   align-items: center;
   /* opacity: 0.5; */
+  /* padding-top: 16.5vh; */
 }
 
 #startMission {
   width: 60%;
   height: 28%;
-  color:  black;
+  /* color:  black; */
   opacity: 1;
   z-index: 3;
   display: flex;
