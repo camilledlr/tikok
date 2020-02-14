@@ -24,7 +24,7 @@ router.post("/myshop/signup", (req, res, next) => {
   };
 
   // if (req.file) user.avatar = req.file.secure_url;
-  shopModel;
+  // shopModel;
   if (
     !newShop.name ||
     !newSeller.username ||
@@ -74,7 +74,7 @@ router.post("/myshop/signup", (req, res, next) => {
             newSeller.shop_id = shop.id
             sellerModel.create(newSeller)
               .then(dbRes => res.redirect(`/myshop/create-shop/${dbRes.shop_id}`))
-          })
+          }).catch(next)
       })
       .catch(next);
   }

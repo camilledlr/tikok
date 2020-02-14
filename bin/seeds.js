@@ -72,7 +72,7 @@ const someProductsTemplates = [
 ];
 
   mongoose
-  .connect('mongodb://localhost:27017/tikok', {useNewUrlParser: true})
+  .connect(process.env.MONGO_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
