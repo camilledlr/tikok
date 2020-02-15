@@ -51,8 +51,9 @@
         <button data-item-id="{{this.id}}" class="edit-btn crud-btn green-btn"><i class="fas fa-edit"></i>Edit</button>
       </div>
     </div>
+     {{/each}}
   </div>
-  {{/each}}
+ 
 </div>
 </div>
 <div id="delete-modal" class="modal">
@@ -78,8 +79,11 @@
     <div class="image-upload image-container">
         <label for="file-input">
           <img id="product-image" src="" width="200">
+                     <div class="circle-add-image">
+                <i class="fas fa-plus"></i>
+            </div>
         </label>
-        <input class="input" id="file-input" type="file" name="image"}>
+        <input class="input" id="file-input" type="file" name="image">
       </div>
     <label for="category" name="category" class="label-name label">Category</label>
     <select id="select" name="category" id="category" class="select input">

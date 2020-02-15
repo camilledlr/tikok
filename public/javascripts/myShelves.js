@@ -68,7 +68,6 @@ editbuttons.forEach(btn => {
     const newInfos = {description : description.value, name: name.value, price: price.value }
       service.post(`/myshop/edit-item/${shopId}/${id}`, {newInfos}).then(infos=> {
         displayNewInfos(trucAedit, infos);
-        debugger
         document.getElementById('edit-modal').style.display='none'
       });
     };

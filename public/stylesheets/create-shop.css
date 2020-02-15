@@ -28,8 +28,18 @@ h3 {
     align-items: center;
     justify-content: center;
     color: white;
+<<<<<<< HEAD
     height: 80vh;
+=======
+    height: 64vh;
+>>>>>>> 914fe43b43fe74e161d88eb82741a3b46799f07b
 }
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+}
+
 
 
 .edit-content {
