@@ -67,24 +67,17 @@ app.use(function exposeLoginStatus(req, res, next) {
   if (!req.session.currentUser) {
     res.locals.currentUser = undefined;
     res.locals.isLoggedIn = false;
-    res.locals.isAdmin = false;
+    // res.locals.isAdmin = false;
   } else {
     res.locals.currentUser = req.session.currentUser;
     res.locals.isLoggedIn = true;
-    res.locals.isAdmin = req.session.currentUser.role === "admin";
+    // res.locals.isAdmin = req.session.currentUser.role === "admin";
   }
   next();
 });
 
-// app.use(function protectAdminRoute(req, res, next) {
-//   if (req.session.currentUser && req.session.currentUser.role === "admin") next();
-//   else res.redirect("/");
-// })
+app.use(checkloginStatus);
 
-// app.use(function protectRoute(req, res, next) {
-//   if (req.session.currentUser) next();
-//   else res.redirect("/");
-// })
 
 app.use("/", indexRouter);
 app.use("/shopping", custRouter);
@@ -111,7 +104,7 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
-app.use(checkloginStatus);
+
 // app.use(exposeFlashMessage)
 
 module.exports = app;
