@@ -1,48 +1,18 @@
-
-<header class="dashboard-header">
-  <nav class="navbar">
-    <div class="logoandtext">
-      {{!-- <img src="/coq.png" alt="imgcoq" class="coqimg"> --}}
-
-      <p class="tikoktext">tikok</p>
-      <img class="coqimg" alt="imgcoq"
-        src="https://res.cloudinary.com/dyvosdvps/image/upload/v1581546572/tikok-pictures/Sans_titre_1_b7shu3.png">
+{{>sellerNavBar}}
+<div class="dashboard-container">
+<section class="infos-placeholder">
+  <div class="shop-infos">
+    <img src={{shop.image}} alt={{shop.name}} width="300">
+    <div class="infos">
+      <h1>{{shop.name}}</h1>
+      <div>{{shop.description}}</div>
+      <div>{{shop.address.address1}},<br>{{shop.address.city}},<br>{{shop.address.departement}}</div>
     </div>
-    <div class="navtext">
-      <ul class="navlist">
-        <li><a href="/"> Home </a></li>
-        <li><a href="/myshop/dashboard/{{shop.id}}"> My Dashboard </a></li>
-        <li><a href="/logout" >Log Out</a></li>
-      </ul>
-    </div>
-  </nav>
-</header>
-
-
-
-
-<div class="allfirstblock">
-
-<div class="dash">
-
-  <div class="titleandimagegrid">
-
-    <div class="titleandimage">
-    <h1 class="titledashboard">{{shop.name}}</h1>
-    </div>
-     <div>
-    <p id="dashboard-intro"> 
-        <img class="avatar" src="{{shop.image}}" alt="user avatar">
-    </p>
-    </div>
-    </div>
-    <div class="shelvesandorders">
-        <a href="/myshop/myshelves/{{shop._id}}" class="gotomy">My Shelves</a>
-
-
-        <a href="/myshop/myorders/{{shop._id}}" class="gotomy"> My Orders</a>
-    </div>
-</div>
-
+  </div>
+</section>
+<section class="link-placeholder">
+  <a href="/myshop/myshelves/{{shop._id}}" class="gotomy">My Shelves</a>
+  <a href="/myshop/myorders/{{shop._id}}" class="gotomy"> My Orders</a>
+</section>
 </div>
 

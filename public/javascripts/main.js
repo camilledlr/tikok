@@ -23,7 +23,10 @@ const martinique = {
      .then(response => {
         console.log(response.data);
         response.data.forEach((element, i) => {
-            geocoder.geocode({address :element.address}, function (results, status) {
+            console.log('element =',element.address.address1)
+            let geoAddress  = element.address.address1 + element.address.city + element.address.departement
+            console.log(geoAddress)
+            geocoder.geocode({address : geoAddress}, function (results, status) {
                 if (status === 'OK') {
 
                   map.setCenter(results[0].geometry.location);

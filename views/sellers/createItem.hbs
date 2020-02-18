@@ -1,22 +1,4 @@
-<header class="dashboard-header">
-<nav class="navbar">
-<div class="logoandtext">
-{{!-- <img src="/coq.png" alt="imgcoq" class="coqimg"> --}}
-
-<p class="tikoktext">tikok</p>
-<img class="coqimg" alt="imgcoq"
-src="https://res.cloudinary.com/dyvosdvps/image/upload/v1581546572/tikok-pictures/Sans_titre_1_b7shu3.png">
-</div>
-<div class="navtext">
-<ul class="navlist">
-<li><a href="/"> Home </a></li>
-<li><a href="/myshop/dashboard/{{shop.id}}"> My Dashboard </a></li>
-<li><a href="/logout"> Log Out</a></li>
-</ul>
-</div>
-</nav>
-</header>
-
+{{>sellerNavBar}}
 <section class="main">
 <div class="big-container product-manage-wrapper flexed-item">
 <h3 class="form-title">Ajouter un produit</h3>
@@ -29,10 +11,6 @@ enctype="multipart/form-data">
             <div class="circle-add-image">
                 <i class="fas fa-plus"></i>
             </div>
-          {{!-- </div>
-          <div class="circle-add-image">
-            <i class="fas fa-plus"></i>
-          </div> --}}
         </label>
         <input class="input" id="file-input" type="file" name="image" value={{shop.image}}>
 </div>
@@ -57,16 +35,15 @@ enctype="multipart/form-data">
 <div class="form-item-wrapper flexed-item">
 <label for="price" class="label-ref label">Prix</label>
 <input id="price" name="price" type="price" class="inputlogin" placeholder="ex: 2" required>
+<select name="unity" id="unity" class="select" required>
+<option value="/kg" name="unity">/kg</option>
+<option value="l'unité" name="unity">l'unité</option>
 </div>
-<br>
 <div class="form-item-wrapper flexed-item">
 <label for="description" class="label-ref label">Description</label>
 <input id="description" name="description" type="description" class="inputlogin" placeholder="Golden">
 </div>
-
-<br>
-
-<div class="btnlogin">
+<div>
 <button class="submit-button">Ajouter</button>
 </div>
 </form>

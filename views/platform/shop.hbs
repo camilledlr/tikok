@@ -1,7 +1,8 @@
 {{>customerNavBar}}
 {{>header_drawing}}
-<div id="shopNameSSS">{{shop.name}}</div>
-<div id= "shopSSS" class="grid-container" data-shop-id="{{shop._id}}">
+<div id="shop-title">{{shop.name}}</div>
+<div id="shop-description">{{shop.description}}</div>
+<div class="grid-container" data-shop-id="{{shop._id}}">
   {{#each shop.list_products}}
     <div class="block display-block">
       
@@ -12,3 +13,4 @@
         </div>
     </div>
     {{/each}}
+ </div>

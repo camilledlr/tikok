@@ -23,13 +23,21 @@ router.get("/create-shop/:id", (req, res, next) => {
 
 router.post("/create-shop/:id", uploadCloud.single("image"), (req, res, next) => {
   const {
-    address,
+    address1,
+    city,
+    departement,
     phone,
+    type,
     description
   } = req.body; //type
   const newPoulet = {
-    address,
+    address : {
+      address1,
+      departement,
+      city
+    },
     phone,
+    type,
     description,
   };
   if (req.file) newPoulet.image = req.file.secure_url;
@@ -61,7 +69,6 @@ router.get("/myshelves/:id", (req, res, next) => {
 });
 
 router.get("/delete-item/:shop_id/:id",(req, res, next) => {
-  console.log("heyyyy");
   const removeShopProduct = shopModel.findByIdAndUpdate(
     req.params.shop_id, {
       $pull: {
@@ -119,18 +126,19 @@ router.get("/create-item/:shop_id",(req, res, next) => {
 });
 
 router.post("/create-item/:shop_id", uploadCloud.single("image"), (req, res, next) => {
-  console.log(req)
   const {
     category,
     name,
     price,
-    description
+    description,
+    unity
   } = req.body;
   const newItem = {
     category,
     name,
     price,
     description,
+    unity
   };
   newItem.id_shop = req.params.shop_id;
   if (req.file) newItem.image = req.file.url;
@@ -173,25 +181,6 @@ router.get("/dashboard/:shop_id", (req, res, next) => {
     .then(shop => res.render("sellers/dashboard", {
       shop
     }));
-  console.log("here", req.params.shop_id)
 })
-
-// search bar on my shelves
-
-router.get('/shopping/search', function (req, res, next) {
-  console.log(req.query)
-  productModel
-    .find({
-      name: {
-        $regex: req.query.q,
-        $options: "i"
-      },
-      isTemplate: false
-    }).populate('id_shop')
-    .then(dbRes => res.json(dbRes))
-    .catch(next)
-});
-
-
 
 module.exports = router;

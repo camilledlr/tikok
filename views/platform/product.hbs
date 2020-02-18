@@ -1,25 +1,24 @@
 {{>customerNavBar}}
-<div class="grid-container">
-    <div class="block display-block" data-shop-id="{{shop.id}}">
-
-        <img class="product-image" alt="{{product.name}}" src={{product.image}} width="300">
-        <div class="infos-placeholder" data-item-id="{{product.id}}">
-        <div class="nadap">
-        <div class="nameanddescription">
-        <div>{{product.name}}</div>
+<div class="item-placeholder" data-shop-id="{{shop.id}}">
+<div class="image-infos" data-shop-id="{{shop.id}}">
+  <img class="product-image" alt="{{product.name}}" src={{product.image}} width="300">
+  <div class="infos-placeholder" data-item-id="{{product.id}}">
+        <h1>{{product.name}}</h1>
         <div>{{product.description}}</div>
-        </div>
-         <div class="priceofproduct">
-        <div>Price :{{product.price}}€</div>
-        </div>
-        </div>
+        <div>{{product.price}}€ ({{product.unity}})</div>
+        <label for="quantity">Quantité</label>
+        <input name="quantity" id="quantity" type="number">
+  </div>
+  </div>
+<button id="order-button" class="btnorder">ORDER</button>
+</div>
 
-      <a><button id="order-button" class="btnorder">ORDER</button></a>
-
+<section id="other-products">
+<h2>Ce commerçant vend aussi ...</h2>
 {{#each otherProducts}}
       <div>
-        <img src="{{this.image}}" alt="" width="300"> 
+        <img src="{{this.image}}" alt="" width="150"> 
         <h3>{{this.name}}</h3>     
         </div>
 {{/each}}
-    </div>
+</section>

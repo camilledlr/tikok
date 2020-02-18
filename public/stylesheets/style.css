@@ -86,17 +86,32 @@ a {
   display: flex;
 }
 
-.shelvesandorders {
+/* Dashboard */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-infos {
+  display: flex;
+  padding: 2vh;
+  background-color: tomato;
+  width: 50%;
+}
+.infos {
+  margin-left: 3vh;
+}
+
+.link-placeholder {
   width: 70vw;
   display: flex;
-  /* grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
   flex-wrap: wrap;
   grid-column-gap: 50px;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.shelvesandorders a {
+.link-placeholder a {
   width: 100%
 }
 
@@ -363,23 +378,6 @@ a {
 
 /* shops products description */
 
-.btnorder {
-  width: 20vh;
-  height: 10vh;
-  color: white;
-  border: 1px solid tomato;
-  color: tomato;
-}
-
-.btnorder:hover {
-  background-color: tomato;
-  border: 1px solid black;
-  color: white;
-}
-
-.nadap {
-  display: flex;
-}
 
 .priceofproduct {
   margin-left: 27vh;
@@ -416,36 +414,17 @@ a {
 }
 /* dashboard seller */
 
-.dashboard-header {
-  /* position: fixed; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
-  /* display: flex; */
-  /* justify-content: space-between;  */
-  width: 100%;
-  /* background-color: rgb(20, 175, 175);  */
-  border-radius: 0vh 0vh 0vh 0vh; 
-  /* background-image: url('/beach2.png'); */
-  background-color: rgb(5, 110, 93);
-  background-size: cover;
-  height: 8vh;
-  border-bottom: 1px solid white;
-  /* border-bottom: 4px solid white; */
-
-}
-
 .fa-shopping-basket {
   font-size: 4vh;
 }
 
-.navbar {
+.seller-navbar {
   display: flex;
   justify-content: space-between; 
   align-items: center;
   align-content: center; 
   height: 8vh;
-
+  background-color: teal;
   /* flex-direction: column; */
 }
 
@@ -549,7 +528,7 @@ a {
 
 /* Header drawing */
 
-#drawingHolder {
+#drawing-placeholder {
   background-image: url('https://res.cloudinary.com/dyvosdvps/image/upload/v1581595867/tikok-pictures/drawingWhite_cp1xro.png');
   /* option in black https://res.cloudinary.com/dyvosdvps/image/upload/v1581595716/tikok-pictures/drawingBlack_hkcsff.png */
   background-color: rgb(5, 110, 93);
@@ -558,20 +537,34 @@ a {
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
-  /* margin-top: 1vh; */
   top: 10%;
   background-position: 50% 75%;
   padding-top: 10px;
 }
 
-#sBigHolder {
+#header-drawing {
   display: flex;
 }
 
-/* Shop page while shopping */
+.shop-img-container {
+  margin-left: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40vh;
+  height: 30vh;
+  position: absolute;
+  bottom: -12.5vh;
+}
 
-#shopSSS {
-  padding-top: 14vh;
+/* Shop page while shopping */
+.grid-container {
+  padding: 11vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
+    grid-gap: 2vh;
+    align-items: center;
+    justify-items: center;
 }
 
 #shopNameHolder {
@@ -581,23 +574,27 @@ a {
   font-size: 7vh;
 }
 
-#shopNameSSS {
+#shop-title {
+  margin-top: 7vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7vh;
+  font-size: 9vh;
+  color: rgb(241, 118, 96)
+}
+
+#shop-description {
+  font-size: 3vh;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
 }
 
 #sShopImg {
   height: auto; 
   width: 22vw; 
-  /* border-radius: 25vh; */
 }
 
-#sTitleHolder {
-  position: absolute;
-  top: 70%;
-}
 
 
 /* create item */
@@ -836,4 +833,42 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
     grid-gap: 5vh;
+}
+
+/* item page */
+
+#other-products {
+  background-color: rgba(100, 146, 8, 0.616);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2vh;
+  overflow: scroll;
+}
+.item-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin : 4vh;
+}
+.image-infos {
+  display: flex;
+}
+.infos-placeholder{
+  margin-left: 4vh;
+}
+
+.btnorder {
+  width: 20vh;
+  height: 10vh;
+  color: white;
+  border: 1px solid tomato;
+  color: tomato;
+  border-radius: 40px;
+  margin-top: 5vh;
+}
+
+.btnorder:hover {
+  background-color: tomato;
+  color: white;
 }

@@ -52,23 +52,18 @@ router.post("/myshop/signup", (req, res, next) => {
           req.flash("error", "This email already exists");
           return res.redirect("/myshop/signup");
         }
-
-        const salt = bcrypt.genSaltSync(10); // https://en.wikipedia.org/wiki/Salt_(cryptography)
-        const hashed = bcrypt.hashSync(newSeller.password, salt); // generates a secured random hashed password
-        newSeller.password = hashed; // new user is ready for db
-
-        // if (bcrypt.compareSync(newSeller.password, dbRes.password)) {
+        const salt = bcrypt.genSaltSync(10);
+        const hashed = bcrypt.hashSync(newSeller.password, salt);
+        newSeller.password = hashed;
         //   const {
         //     _doc: clone
         //   } = {
         //     ...dbRes
         //   };
         //   delete clone.password;
-          
         //   // console.log(req.session)
         //   req.session.currentUser = clone;
         // }
-
         shopModel.create(newShop)
           .then(shop => {
             newSeller.shop_id = shop.id
@@ -113,10 +108,8 @@ router.post("/myshop/login", (req, res, next) => {
             ...dbRes
           };
           delete clone.password;
-          
-          // console.log(req.session)
           req.session.currentUser = clone;
-          req.flash("success", "access garanted")
+          console.log(dbRes.shop_id);
           return res.redirect(`/myshop/dashboard/${dbRes.shop_id}`);
         } else {
           req.flash("error", "wrong credentials");
@@ -213,7 +206,6 @@ router.post("/shopping/login", (req, res, next) => {
         return res.redirect("/home");
       } else {
         req.flash("error", "wrong credentials");
-
         return res.redirect("/shopping/login");
       }
     })

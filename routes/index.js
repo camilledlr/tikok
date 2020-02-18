@@ -24,21 +24,10 @@ router.get("/home", function (req, res, next) {
     );
 });
 
-function uniquifyArray(array) {
-  for (let i = array.length - 1; i >= 0; i--) {
-    if (array.indexOf(array[i]) !== i) {
-      array.splice(i, 1);
-    }
-  }
-  return array;
-}
-
 router.get("/shopping/search", function(req, res, next) {
-  console.log(req.query);
-  console.log(req.session);
-  productModel
-    .find({ name: { $regex: req.query.q, $options: "i" }, isTemplate: false })
-    .populate("id_shop")
+const findProduct = productModel.find({ $or: [ { name: { $regex: req.query.q, $options: "i" }}, {category: { $regex: req.query.q, $options: "i"  }},{type: { $regex: req.query.q, $options: "i"  }} ] , isTemplate: false }).populate("id_shop")
+const findShop = shopModel.find({ name: { $regex: req.query.q, $options: "i" }})
+Promise.all([findProduct, findShop])
     .then(dbRes => res.json(dbRes))
     .catch(next);
 });
@@ -82,32 +71,32 @@ router.get("/shopping/shop/:shop_id/:id", (req, res, next) => {
     .catch(next)
 })
 
-router.get("/shopping/add-to-basket/:shop_id/:item_id", function(req, res, next) {
+router.post("/shopping/add-to-basket/:shop_id/:item_id", function(req, res, next) {
+  console.log(req.body);
   const cust = req.session.currentUser._id;
   const shop = req.params.shop_id;
-
   orderModel
     .findOne({customer_id: cust , shop_id: shop, status:"basket"})
     .then(orderExists => {
       if (orderExists) {
+        console.log("existe")
         orderModel
           .findByIdAndUpdate(orderExists._id, {
-            $push: { list_products: req.params.item_id }
+            $push: { list_products: {item : req.params.item_id, quantity : req.body.quantity}}
           })
-          .then(dbRes => { customerModel.findByIdAndUpdate(cust, {$push: {'orders.baskets': dbRes.id}})
-            .then(dbRes =>console.log(res.json(dbRes)))
-            .catch(err => console.log(err))
-            })
-          .catch(err => console.log(err));
+          .then(dbRes => res.json(dbRes))
+          .catch(err => console.log(err))
       } else {
+        console.log("existe pas")
         orderModel
           .create({
             shop_id: shop,
             customer_id: cust,
             status: "basket",
-            list_products: [req.params.item_id]
+            list_products: [{item : req.params.item_id, quantity : req.body.quantity}]
           })
-          .then(dbRes => { customerModel.findByIdAndUpdate(cust, {$push: {'orders.baskets': dbRes.id}})
+          .then(dbRes => { console.log("existe pas créée");
+            customerModel.findByIdAndUpdate(cust, {$push: {'orders.baskets': dbRes.id}})
             .then(dbRes =>res.json(dbRes))
             .catch(err => console.log(err))
             })

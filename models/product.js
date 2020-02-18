@@ -13,6 +13,10 @@ const productSchema = new Schema({
   },
   ref: String,
   price: Number,
+  unity: {
+    type : String,
+    enum : ["/kg", "l'unité"]
+  },
   quantity: Number,
   description : String,
   type:String,

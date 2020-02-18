@@ -1,4 +1,4 @@
-<div id="map"></div>
+{{>sellerNavBar}}
 <div class="body-container">
   <h1>{{shop.name}}</h1>
   <h3>Your shop online</h3>
@@ -22,7 +22,7 @@
 
       <div class='input-container type-container'>
         <label for="type">Shop Type</label>
-        <select id="select" class="input" id="type" name="type" required>
+        <select class="input" id="type" name="type" required>
           <option value="Farmer">Farmer</option>
           <option value="Fisher">Fisher</option>
           <option value="Artisan">Artisan</option>
@@ -36,7 +36,13 @@
       </div>
       <div class='input-container address-container'>
         <label for="address">Address</label>
-        <input class="input" name="address" id="address" placeholder="Where is your shop ?" required>
+        <input class="input" name="address1" id="address1" placeholder="Addresse" required>
+        <input class="input" name="city" id="city" placeholder="Ville" required>
+        <select class="input" id="departement" name="departement" required>
+          <option value="Martinique">Martinique</option>
+          <option value="Guadeloupe">Guadeloupe</option>
+          <option value="Guyane">Guyane</option>
+        </select>
       </div>
       <div class='input-container phone-container'>
         <label for="phone">Phone</label>

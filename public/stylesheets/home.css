@@ -88,7 +88,7 @@
      background-position: 0 0;
 }
 
-.grid-container {
+.home-grid-container {
     padding: 11vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));

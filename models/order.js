@@ -11,7 +11,10 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Customer"
   },
-  list_products: [{ type: Schema.Types.ObjectId, ref: "Products" }],
+  list_products: [{
+    item : {type: Schema.Types.ObjectId, ref: "Products"},
+    quantity : Number
+  }],
   creation_date: Date,
   status: {
     type: String,
